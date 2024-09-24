@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>وصل - احجز موعدك الطبي</title>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/1458/1458279.png"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "o6kveYmOSDrs0l1Mg",
+        });
+      })();
+    </script>
+
+    <script
+      src="https://kit.fontawesome.com/b08b6de27e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+        color: #fff;
+      }
+
+      .container {
+        text-align: center;
+        margin-top: 5rem;
+      }
+
+      .header_container {
+        background-color: #022a2d;
+        opacity: 0.9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 101;
+      }
+
+      .img {
+        display: flex;
+        align-items: center;
+      }
+
+      .img p {
+        color: white;
+        font-size: 1.4rem;
+        margin-left: 10px;
+      }
+
+      .nav_menu {
+        display: flex;
+        align-items: center;
+      }
+
+      .nav_link {
+        list-style: none;
+        display: flex;
+      }
+
+      .nav_link li {
+        margin-right: 20px;
+      }
+
+      .nav_link li a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        transition: 0.3s;
+      }
+
+      .nav_link li a:hover {
+        background-color: #55a5ea;
+        border-radius: 5px;
+      }
+
+      .hamburger {
+        display: none;
+        cursor: pointer;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 21px;
+      }
+
+      .line {
+        width: 30px;
+        height: 3px;
+        background-color: white;
+      }
+
+      @media (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+
+        .nav_menu {
+          display: none;
+          flex-direction: column;
+        }
+
+        .nav_menu.active {
+          display: flex;
+        }
+      }
+
+      /* Footer styles */
+      footer {
+        background-color: #022a2d;
+        padding: 20px;
+        color: white;
+        text-align: center;
+      }
+
+      .footer-columns {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .footer-col {
+        flex: 1;
+        padding: 10px;
+      }
+
+      .footer-col ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col ul li a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-col ul li a:hover {
+        color: #55a5ea;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header_container">
+      <div class="img">
+        <img
+          id="rd-logo"
+          style="width: 90px; height: auto"
+          src="/assets/img/rd1.png"
+          alt="شعار وصل"
+        />
+        <p>وصل</p>
+      </div>
+      <nav class="nav_menu">
+        <ul class="nav_link">
+          <li><a href="/">الرئيسية</a></li>
+          <li><a href="#about">من نحن</a></li>
+          <li><a href="news.html">الأخبار</a></li>
+          <li><a href="services.html">الخدمات</a></li>
+          <li><a href="#doctors">الأطباء</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+      </nav>
+      <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </header>
+
+    <div class="container mt-5" id="privacy-policy-container">
+      <h1>احجز موعدك الطبي</h1>
+      <p>تواصل بسهولة مع خبراء الرعاية الصحية!</p>
+
+      <form id="appointment-form">
+        <div class="form-section">
+          <label for="full-name">الاسم الكامل</label>
+          <input
+            type="text"
+            id="full-name"
+            name="full-name"
+            placeholder="ادخل اسمك"
+            required
+          />
+        </div>
+
+        <div class="form-section">
+          <label for="dob">تاريخ الميلاد:</label>
+          <input type="date" id="dob" name="dob" required />
+        </div>
+
+        <div class="form-section">
+          <label for="email">البريد الإلكتروني</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@example.com"
+            required
+          />
+        </div>
+
+        <div class="form-section">
+          <label for="phone">رقم الهاتف</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="ادخل رقم هاتفك"
+            required
+          />
+        </div>
+
+        <div class="form-section">
+          <label for="doctor-select">اختر الطبيب</label>
+          <select id="doctor-select" name="doctor">
+            <option value="" disabled selected>اختر الطبيب</option>
+            <option value="د. محمد">د. محمد - أخصائي القلب</option>
+            <option value="د. سارة">د. سارة - طبيبة الجلدية</option>
+            <option value="د. خالد">د. خالد - أخصائي الأنف والأذن</option>
+          </select>
+        </div>
+
+        <div class="form-section">
+          <label for="appointment-date">تاريخ الموعد:</label>
+          <input type="date" id="appointment-date" name="date" required />
+        </div>
+
+        <div class="form-section">
+          <label for="time-slot">اختر الوقت</label>
+          <select id="time-slot" name="time-slot" required>
+            <option value="10:00 AM">10:00 صباحاً</option>
+            <option value="11:00 AM">11:00 صباحاً</option>
+            <option value="12:00 PM">12:00 ظهراً</option>
+          </select>
+        </div>
+
+        <div class="form-section">
+          <label for="reason">سبب الزيارة</label>
+          <textarea
+            id="reason"
+            name="reason"
+            placeholder="ادخل سبب الزيارة..."
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit">احجز الآن</button>
+      </form>
+    </div>
+
+    <footer>
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>روابط سريعة</h4>
+          <ul>
+            <li><a href="/">الرئيسية</a></li>
+            <li><a href="#about">من نحن</a></li>
+            <li><a href="services.html">الخدمات</a></li>
+            <li><a href="#doctors">الأطباء</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>استكشف</h4>
+          <ul>
+            <li><a href="appointment.html">احجز موعداً</a></li>
+            <li><a href="#">بوابة المرضى</a></li>
+            <li><a href="login.html">تسجيل الدخول</a></li>
+            <li><a href="helpline.html">خطوط المساعدة</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>القانوني</h4>
+          <ul>
+            <li><a href="terms_and_conditions.html">الشروط والأحكام</a></li>
+            <li><a href="privacy_policy_page.html">سياسة الخصوصية</a></li>
+          </ul>
+        </div>
+      </div>
+      <small>&copy; 2024 وصل. جميع الحقوق محفوظة</small>
+          <style>
+            .social-wrapper a div i {
+              color: #afb6c7;
+            }
+            .social-wrapper a div i:hover {
+              color: #fff;
+            }
+          </style>
+          <div class="social-wrapper">
+            <div class="social-links">
+              <div style="margin-left: 100px; font-family: sans-serif">
+                <i>Follow&nbsp;Us&nbsp;:&nbsp;</i>
+              </div>
+              <a href="https://www.facebook.com/" target="_blank"
+                ><div><i class="fa-brands fa-facebook-f"></i></div
+              ></a>
+              <a href="https://www.twitter.com"
+                ><div><i class="fa-brands fa-twitter"></i>
+                  </div
+              ></a>
+              <a href="https://www.linkedin.com" target="_blank"
+                ><div><i class="fa-brands fa-linkedin"></i></div
+              ></a>
+              <a href="#" target="_blank"
+                ><div><i class="fa-brands fa-instagram"></i></div
+              ></a>
+              <a
+                href="https://github.com/Anishkagupta04/RAPIDOC-HEALTHCARE-WEBSITE-"
+                target="_blank"
+                ><div><i class="fa-brands fa-github"></i></div
+              ></a>
+              <a href="+91 1234567890" title="+91 1234567890" target="_blank"
+                ><div><i class="fa-solid fa-phone"></i></div
+              ></a>
+              <a href="info@rapidoc.com" target="_blank"
+                ><div><i class="fa-solid fa-envelope"></i></div
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const hamburger = document.querySelector('.hamburger');
+      const navbar = document.querySelector('.header_container');
+      const nav = document.querySelector('.nav_link');
+      hamburger.addEventListener('click', () => {
+        navbar.classList.toggle('nav-h');
+        nav.classList.toggle('vis-h');
+      })
+      function toggleAnswer(id) {
+        var answer = document.getElementById(id);
+        if (answer) {
+          if (answer.style.display === "block") {
+            answer.style.display = "none";
+            document.getElementById(
+              "icon" + id.charAt(id.length - 1)
+            ).innerText = "➕";
+          } else {
+            answer.style.display = "block";
+            document.getElementById(
+              "icon" + id.charAt(id.length - 1)
+            ).innerText = "➖";
+          }
+        }
+      }
+    </script>
+    <script>
+      //// JavaScript working of scroll button when scrolling down
+      var backToTopBtn = document.getElementById("back-to-top");
+
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener("click", function () {
+          document.body.scrollTop = 0; // For Safari
+          document.documentElement.scrollTop = 0; // For Chrome, Firefox, edge
+        });
+      }
+
+      // JavaScript to show scroll button when scrolling down
+      window.addEventListener("scroll", function () {
+        var scrollBtn = document.getElementById("back-to-top");
+        if (scrollBtn) {
+          if (
+            document.body.scrollTop > 20 ||
+            document.documentElement.scrollTop > 20
+          ) {
+            scrollBtn.style.display = "block";
+          } else {
+            scrollBtn.style.display = "none";
+          }
+        }
+      });
+    </script>
+    <script>
+      ScrollReveal({
+    //reset: true ,
+    distance: '60px',
+    duration: 2500,
+    delay: 400
+  });
+  ScrollReveal().reveal('.container', { delay: 600, origin: 'bottom' ,interval:200});
+    </script>
+  </body>
+</html>
